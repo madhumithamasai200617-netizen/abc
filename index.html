@@ -2,27 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Advance Birthday Wishes</title>
-  <link rel="stylesheet" href="style.css">
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d6d;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      background: #ff2e55;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
 
-<div class="card">
-  <h1 class="title">🎂 Advance Birthday Wishes</h1>
+  <div class="card">
+    <h1>Hey My Love ❤️</h1>
+    <p>
+      I know this is an advance wish,<br>
+      but my heart can’t wait.<br>
+      You mean everything to me 🌸
+    </p>
 
-  <input type="text" id="name" placeholder="Birthday Person Name">
-  <textarea id="wish" placeholder="Write your birthday wish..."></textarea>
-  <input type="date" id="date">
+    <button onclick="showMessage()">Click for Your Wish 💌</button>
 
-  <button onclick="saveWish()">Save Wish</button>
+    <div id="message" class="hidden">
+      ✨ No matter the day, the moment, or the future —
+      I wish you happiness, success, love, and endless smiles.
+      I’ll always be cheering for you. 💖
+    </div>
+  </div>
 
-  <div id="countdown"></div>
-  <h2 id="result"></h2>
-</div>
+  <script>
+    function showMessage() {
+      document.getElementById("message").classList.remove("hidden");
+    }
+  </script>
 
-<div class="confetti"></div>
-
-<script src="script.js"></script>
 </body>
 </html>
-
