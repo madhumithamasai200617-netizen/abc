@@ -1,0 +1,53 @@
+body{
+    background-color:rgb(1, 1, 29);
+    font-family:"times new roman";
+}
+.heading{
+    text-align:center;
+    color:white;
+    margin-top:100px;
+}
+.mail{
+    text-align:center;
+    color:white;
+    margin-top:100px;
+
+
+
+}
+.password{
+    text-align:center;
+    color:white;
+    margin-top:25px;
+    
+}
+.login{
+    text-align:center;
+    color:white;
+    margin-top:30px;
+}
+    
+input{
+    width:200px;
+    padding:10px;
+    border-radius:20px;
+    border:none;
+    outline:none;
+}
+button{
+    font-family:"times new roman";
+    width:200px;
+    padding:10px;
+    border-radius:20px;
+   
+}
+button:hover{
+    background-color:rgb(5, 183, 248);
+}
+.one{
+    margin-top:100px;
+    color:white;
+    text-align:center;
+    font-size:25px;
+
+}
