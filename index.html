@@ -1,88 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>For My Love ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: black;
-      text-align: center;
-    }
+<!doctype html>
+<html>
+    <head>
+        <title>FAKEIDDETECT</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <div class="heading">
+        <h1>
+                FAKE ID DETECTION
+    
+        </h1>
+        <h2>STAY FEARLESS | STAY SECURE</h2>
+        </div>
+        <form>
+            <div class="mail">
+                <h2>
+                    <label for="email">Email:</label>&nbsp;
+                    <input type="email" id="email" placeholder="enter your email"><br>
+                </h2>
+            </div>
+            <div class="password">
+                <h1>
+                    <label for="password">Password:</label>&nbsp;
+                    <input type="password" id="password" placeholder="enter password"><br>
+                    
+                </h2>
+            </div>
+            <div class="login">
+                <h2>
+            <button type="submit">LOGIN--></button><br>
+                </h2>
+            </div>
+             <div class="one">
+            <hr>
+           
+                <p>don't have an account?signup</p>
+            </div>
 
-    .card {
-      rgba(135, 206, 235, 0.3)
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      backdrop-filter: blur(10px);
-    }
+        </form>
+       
+    
+           
+    </body>
 
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 30px;
-      background:sky blue;
-      color: black;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    button:hover {
-      background: sky blue;
-      transform: scale(1.05);
-    }
-
-    .hidden {
-      display: none;
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: black;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="card">
-    <h1>Yo Mama ❤️</h1>
-    <p>
-      Advance birthday wishes da <br>
-      6 days to go for the most important day<br>
-      You mean everything to me 🌸
-    </p>
-
-    <button onclick="showMessage()">Click for Your Wish 💌</button>
-
-    <div id="message" class="hidden">
-      wish you a many more happy returns of the day in advance
-      i just want you to feel special for those days in  advance
-    </div>
-  </div>
-
-  <script>
-    function showMessage() {
-      document.getElementById("message").classList.remove("hidden");
-    }
-  </script>
-
-</body>
 </html>
