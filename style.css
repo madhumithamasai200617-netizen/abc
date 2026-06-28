@@ -1,6 +1,9 @@
 body{
     background-color:rgb(1, 1, 29);
     font-family:"times new roman";
+    background:url('back2.gif.gif');
+    background-repeat:no-repeat;
+    background-size:cover;
 }
 .heading{
     text-align:center;
@@ -10,44 +13,90 @@ body{
 .mail{
     text-align:center;
     color:white;
-    margin-top:100px;
-
-
-
+    font-size:20px;
 }
 .password{
     text-align:center;
     color:white;
     margin-top:25px;
     
+    
 }
+label{
+    display:block;
+    text-align:left;
+    margin:15px 0 5px;
+}
+
 .login{
     text-align:center;
+    background-color:rgb(236, 233, 235);
     color:white;
-    margin-top:30px;
+    margin-top:50px;
+    margin-left:150px;
+    margin-right:150px;
+    text-transform:uppercase;
+    text-decoration:none;
+    font-size:18px;
+    font-family:"times new roman";
+    transition:0.5s;
+    padding:10px;
+    border-radius:10px;
+   
 }
     
 input{
-    width:200px;
-    padding:10px;
-    border-radius:20px;
-    border:none;
+    width:100%;
+    padding:12px;
+    border-radius:30px;
+    border:2px solid transparent;
     outline:none;
+    background: rgba(0,0,0,0.6);
+    color:white;
+    transition:0.3s;
+    text-align:center;
+    width:400px;
+}
+input:focus{
+     border:2px solid #00ffff;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+
 }
 button{
-    font-family:"times new roman";
-    width:200px;
+    background-color:rgb(174, 160, 195);
+    color:white;
+    margin-left:150px;
+    margin-right:150px;
+    text-transform:uppercase;
+    text-decoration:none;
     padding:10px;
+    font-size:18px;
+    transition:0.5s;
+    
     border-radius:20px;
    
 }
-button:hover{
-    background-color:rgb(5, 183, 248);
+.login:hover{
+    box-shadow:
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #0ff;
+
 }
 .one{
-    margin-top:100px;
+    margin-top:50px;
     color:white;
     text-align:center;
     font-size:25px;
 
+}
+form{
+    border:2px solid white;
+    margin-left:500px;
+    margin-right:500px;
+    background-color:rgb(5, 5, 56);
+    border-radius:20px;
+    opacity:0.6;
 }
