@@ -1,47 +1,50 @@
 <!doctype html>
+
 <html>
-    <head>
-        <title>FAKEIDDETECT</title>
-        <link rel="stylesheet" href="style.css">
-        
-    </head>
-    <body>
-        <div class="heading">
-        <h1>
-                FAKE ID DETECTION
-    
-        </h1>
-        <h2>STAY FEARLESS | STAY SECURE</h2>
-        </div>
-        <form>
-            <div class="mail">
-                <h2>
-                    <label for="email">Email:</label>&nbsp;&nbsp;&nbsp;
-                    <input type="email" id="email" placeholder="enter your email"><br>
-                </h2>
-            </div>
-            <div class="password">
-                <h1>
-                    <label for="password">Password:</label>&nbsp;&nbsp;&nbsp;
-                    <input type="password" id="password" placeholder="enter password"><br>
-                    
-                </h2>
-            </div>
-            <div class="login">
-                <h2>
-            <button type="submit">LOGIN--></button><br>
-                </h2>
-            </div>
-             <div class="one">
-            <hr>
-           
-                <p>don't have an account?signup</p>
-            </div>
+<head>
+    <title>FAKEIDDETECT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        </form>
-       
-    
-           
-    </body>
+<body>
 
+<div class="heading">
+    <h1>FAKE ID DETECTION</h1>
+    <h2>STAY FEARLESS | STAY SECURE</h2>
+</div>
+
+<form id="loginForm">
+
+<div class="mail">
+    <label>Email:</label><br>
+    <input type="email" id="email" placeholder="enter your email"><br>
+</div>
+
+<div class="password">
+    <label>Password:</label><br>
+    <input type="password" id="password" placeholder="enter password"><br>
+</div>
+
+<div class="login">
+    <button type="submit">LOGIN →</button>
+</div>
+
+<div class="one">
+    <hr>
+    <p>Don't have an account? <a href="signup.html">Signup</a></p>
+</div>
+
+
+</form>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    
+    window.location.href = "user.html";
+});
+</script>
+
+</body>
 </html>
