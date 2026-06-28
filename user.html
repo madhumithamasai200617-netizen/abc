@@ -1,0 +1,130 @@
+!doctype html>
+<html>
+<head>
+    <title>FAKEIDDETECT</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+
+<body>
+
+    <div class="heading">
+        <h1>INSTAGRAM FAKE ID DETECTION</h1>
+        <hr>
+    </div>
+
+    <form>
+
+        <div class="form-group1">
+            <label>USER ID:</label><br>
+            <input type="text" id="name">
+        </div>
+
+        <div class="form-group2">
+            <label>USER NAME:</label><br>
+            <input type="text" id="uname">
+        </div>
+
+        <div class="form-group3">
+            <label>FOLLOWERS:</label><br>
+            <input type="text" id="followers">
+        </div>
+
+        <div class="form-group4">
+            <label>FOLLOWING:</label><br>
+            <input type="text" id="following">
+        </div>
+
+        <div class="form-box1">
+            <label>BIO:</label><br>
+            <input type="text" id="bio" placeholder="Type here..." size="40">
+        </div>
+
+        <div class="form-box2">
+            <label>POST:</label><br>
+            <input type="text" id="post">
+        </div>
+
+        <div class="form-box3">
+            <label>DATE JOINED:</label><br>
+            <input type="date" id="join">
+        </div>
+
+        <div class="form-box4">
+            <label>PROFILE PICTURE</label><br>
+            <input type="file" id="image" accept="image/*"><br><br>
+            <img id="preview" width="120" style="display:none;">
+        </div>
+
+        <div class="proceed">
+            <button type="submit">PROCEED</button>
+        </div>
+
+    </form>
+
+    <!-- RESULT -->
+    <div class="result">
+        <h2 id="resultText"></h2>
+        <p id="percentText"></p>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+
+    // Image preview
+    document.getElementById("image").addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            document.getElementById("preview").src = URL.createObjectURL(file);
+            document.getElementById("preview").style.display = "block";
+        }
+    });
+    
+document.querySelector("form").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    let followers = parseInt(document.getElementById("followers").value) || 0;
+    let following = parseInt(document.getElementById("following").value) || 0;
+    let posts = parseInt(document.getElementById("post").value) || 0;
+    let bio = document.getElementById("bio").value;
+
+    let userid = document.getElementById("name").value.trim();
+    let uname = document.getElementById("uname").value.trim();
+    let join = document.getElementById("join").value;
+
+    
+    if(userid === "" || uname === "" || bio === "" || join === "" || followers === 0 || following === 0){
+        alert("⚠️FILL EVERY DETAILS!");
+        return;
+    }
+
+    
+    let res = await fetch("http://localhost:5000/analyze", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            followers,
+            following,
+            posts,
+            bio
+        })
+    });
+
+    let data = await res.json();
+    console.log("API RESPONSE 👉", data);
+
+    
+    if(data && data.result){
+    window.location.href = "result.html?ai=" + encodeURIComponent(data.result);
+} else {
+    alert("❌ AI response வரல!");
+}
+});
+ 
+    
+
+       </script>
+
+</body>
+</html>
