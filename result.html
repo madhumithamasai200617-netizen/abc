@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>RESULT</title>
+</head>
+<body style="background:black; color:white; text-align:center; margin-top:100px;">
+
+    <h1>AI ANALYSIS RESULT</h1>
+
+    <h2 id="output"></h2>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    let result = params.get("ai");
+
+    if(result){
+        document.getElementById("output").innerText = decodeURIComponent(result);
+    } else {
+        document.getElementById("output").innerText = "❌ No AI Result";
+    }
+</script>
+
+</body>
+</html>
