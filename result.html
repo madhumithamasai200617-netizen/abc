@@ -1,23 +1,100 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>RESULT</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Analysis Result</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:700px;
+    max-width:90%;
+    background:#1e293b;
+    color:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,255,255,.3);
+}
+
+h1{
+    margin-bottom:25px;
+    color:#38bdf8;
+}
+
+#result{
+    text-align:left;
+    background:#111827;
+    padding:20px;
+    border-radius:10px;
+    line-height:1.8;
+    white-space:pre-wrap;
+    font-size:18px;
+}
+
+button{
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    background:#38bdf8;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+button:hover{
+    background:#0284c7;
+}
+</style>
+
 </head>
-<body style="background:black; color:white; text-align:center; margin-top:100px;">
 
-    <h1>AI ANALYSIS RESULT</h1>
+<body>
 
-    <h2 id="output"></h2>
+<div class="container">
 
-    <script>
-    const params = new URLSearchParams(window.location.search);
-    let result = params.get("ai");
+<h1>AI ANALYSIS RESULT</h1>
 
-    if(result){
-        document.getElementById("output").innerText = decodeURIComponent(result);
-    } else {
-        document.getElementById("output").innerText = "❌ No AI Result";
-    }
+<div id="result">
+Loading...
+</div>
+
+<button onclick="window.location.href='user.html'">
+Analyze Another Account
+</button>
+
+</div>
+
+<script>
+const output = document.getElementById("result");
+
+const aiResult = localStorage.getItem("aiResult");
+
+if (aiResult) {
+
+    output.innerHTML = aiResult.replace(/\n/g, "<br>");
+
+} else {
+
+    output.innerHTML = "❌ No AI Result Found";
+
+}
 </script>
 
 </body>
