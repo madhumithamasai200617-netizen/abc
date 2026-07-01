@@ -1,0 +1,160 @@
+body {
+    background-color: rgb(1, 1, 29);
+    font-family: "Times New Roman";
+    background: url('back3.gif') no-repeat center/cover;
+}
+
+/* Heading glow */
+.heading {
+    color: white;
+    margin-top: 50px;
+    
+    text-shadow:
+        0 0 10px #00f7ff,
+        0 0 20px #00f7ff;
+}
+
+/* COMMON BOX STYLE */
+.form-group1,
+.form-group2,
+.form-group3,
+.form-group4,
+.form-box1,
+.form-box2,
+.form-box3,
+.form-box4 {
+
+    color: white;
+    margin-left: 200px;
+    display: inline-block;
+    border-radius: 20px;
+    border: 2px solid rgba(0,255,255,0.3);
+    width: 300px;
+    height: 200px;
+    background-color: rgba(1, 1, 129, 0.6);
+    padding: 20px;
+
+    box-shadow:
+        0 0 10px rgba(0,255,255,0.4),
+        0 0 20px rgba(0,255,255,0.2);
+
+    transition: 0.3s;
+}
+
+/* Hover glow */
+.form-group1:hover,
+.form-group2:hover,
+.form-group3:hover,
+.form-group4:hover,
+.form-box1:hover,
+.form-box2:hover,
+.form-box3:hover,
+.form-box4:hover {
+    box-shadow:
+        0 0 15px #00ffff,
+        0 0 30px #00ffff;
+}
+
+/* Spacing (unchanged) */
+.form-group2,
+.form-group3,
+.form-box1,
+.form-box4 {
+    margin-top: 100px;
+}
+
+.form-box2,
+.form-box3 {
+    margin-top: 50px;
+}
+
+/* BIO input */
+.form-box1 input {
+    width: 250px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: rgba(0,0,0,0.5);
+    color: white;
+}
+
+/* Labels */
+label {
+    display: block;
+    text-align: left;
+    margin: 15px 0 5px;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+/* Inputs */
+input {
+    width: 200px;
+    padding: 12px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    outline: none;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    text-align: center;
+    transition: 0.3s;
+}
+
+/* Input glow */
+input:focus {
+    border: 2px solid #00ffff;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+/* Image preview */
+#preview {
+    margin-top: 10px;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+}
+
+/* Form outer */
+form {
+    border: 2px solid rgba(0,255,255,0.3);
+    margin-right: 100px;
+    margin-left: 100px;
+    background-color: rgba(5, 5, 56, 0.6);
+    border-radius: 20px;
+    opacity: 0.9;
+
+    box-shadow:
+        0 0 20px rgba(0,255,255,0.2);
+}
+
+/* ✅ FIXED: Proceed container */
+.proceed {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ✅ Button */
+button {
+    display: inline-block;
+    color: white;
+    background: linear-gradient(90deg, #00f7ff, #00ff9d);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 18px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* ✅ Correct hover (only button) */
+button:hover {
+    box-shadow:
+        0 0 10px #0ff,
+        0 0 25px #0ff,
+        0 0 50px #0ff;
+    transform: scale(1.05);
+}
