@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
 <head>
     <title>FAKEIDDETECT</title>
@@ -17,12 +16,12 @@
 
 <div class="mail">
     <label>Email:</label><br>
-    <input type="email" id="email" placeholder="enter your email"><br>
+    <input type="email" id="email" placeholder="enter your email" required><br>
 </div>
 
 <div class="password">
     <label>Password:</label><br>
-    <input type="password" id="password" placeholder="enter password"><br>
+    <input type="password" id="password" placeholder="enter password" required><br>
 </div>
 
 <div class="login">
@@ -34,15 +33,48 @@
     <p>Don't have an account? <a href="signup.html">Signup</a></p>
 </div>
 
-
 </form>
 
 <script>
-document.getElementById("loginForm").addEventListener("submit", function(e){
+document.getElementById("loginForm").addEventListener("submit", async function(e){
     e.preventDefault();
 
-    
-    window.location.href = "user.html";
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // ✅ basic validation
+    if (!email || !password) {
+        alert("Please fill all fields ❌");
+        return;
+    }
+
+    try {
+        const res = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        // ✅ better check
+        if (data.message === "Login successful ✅") {
+            alert("Login successful ✅");
+
+            // ✅ optional: store user
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+            window.location.href = "multiple.html";
+        } else {
+            alert(data.message);
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Server error ❌");
+    }
 });
 </script>
 
