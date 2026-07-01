@@ -1,63 +1,93 @@
 <!doctype html>
+
 <html>
-    <head>
-        <title>FAKEIDDETECT</title>
-        <link rel="stylesheet" href="signup.css">
-        
-    </head>
-    <body>
-        <div class="heading">
-        <h1>
-                SIGNUP
-        </h1>
-        
-        </div>
-        <form>
-            <div class="name">
-            
-                    <label for="name">NAME:</label><br>
-                    <input type="string" id="name" placeholder="enter your name"><br>
-                
-            </div>
-           
+<head>
+    <title>FAKEIDDETECT</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
 
-            <div class="email">
-            
-                    <label for="email">EMAIL:</label><br>
-                    <input type="email" id="email" placeholder="enter mail_id"><br>
-                    
-                
-            </div>
-            <div class="password">
-            
-                    <label for="password">PASSWORD:</label><br>
-                    <input type="password" id="password" placeholder="enter password"><br>
-                    
-                
-            </div>
+<body>
 
-            <div class="cpassword">
-            
-                    <label for="cpassword">CONFIRM PASSWORD:</label><br>
-                    <input type="password" id="cpassword" placeholder="confirm password"><br>
-                    
-           
+<div class="heading">
+    <h1>SIGNUP</h1>
+</div>
 
-            <div class="signup">
-                <h2>
-           <a href="index.html">SIGNUP-></a>
-                </h2>
-            </div>
-             <div class="one">
-            <hr>
-           
-                <p>already have an account?<a href="index.html">login</a></p>
-            </div>
+<form id="signupForm">
 
-        </form>
-       
-    
-           
-    </body>
 
+<div class="name">
+    <label>NAME:</label><br>
+    <input type="text" id="name" placeholder="enter your name" required><br>
+</div>
+
+<div class="email">
+    <label>EMAIL:</label><br>
+    <input type="email" id="email" placeholder="enter mail_id" required><br>
+</div>
+
+<div class="password">
+    <label>PASSWORD:</label><br>
+    <input type="password" id="password" placeholder="enter password" required><br>
+</div>
+
+<div class="cpassword">
+    <label>CONFIRM PASSWORD:</label><br>
+    <input type="password" id="cpassword" placeholder="confirm password" required><br>
+</div>
+
+<div class="signup">
+    <button type="submit">SIGNUP →</button>
+</div>
+
+<div class="one">
+    <hr>
+    <p>Already have an account? <a href="index.html">Login</a></p>
+</div>
+
+
+</form>
+<script src="signup.js"></script>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const cpassword = document.getElementById("cpassword").value;
+
+    // ✅ password check
+    if (password !== cpassword) {
+        alert("Passwords do not match ❌");
+        return;
+    }
+
+    try {
+        const res = await fetch("http://localhost:5000/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email, password })
+        });
+
+        const data = await res.json();
+
+        alert(data.message);
+
+        if (data.message.includes("successful")) {
+            // ✅ signup success → login page
+            window.location.href = "index.html";
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Server error ❌");
+    }
+});
+</script>
+<script src="signup.js"></script>
+
+</body>
 </html>
