@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Background */
+body {
+    height: 100vh;
+    background: url('back3.gif') no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Heading */
+.heading {
+    position: absolute;
+    top: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.heading h1 {
+    font-size: 38px;
+    letter-spacing: 2px;
+    color: #00f7ff;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Form box (Glow card) */
+form {
+    border:2px solid white;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 40px;
+    margin-top: 100px;
+    width: 450px;
+    height: 550px;
+    border-radius: 20px;
+    box-shadow: 
+        0 0 10px #00f7ff,
+        0 0 25px #00f7ff50;
+    backdrop-filter: blur(10px);
+}
+
+/* Center all buttons */
+.insta, .facebook, .twitter, .x{
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* ✅ FIXED: apply to ALL anchor buttons */
+.insta a,
+.facebook a,
+.twitter a,
+.x a {
+    display: inline-block;
+    width: 250px;
+    padding: 14px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #00f7ff, #00ff9d);
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Hover glow */
+.insta a:hover,
+.facebook a:hover,
+.twitter a:hover,
+.x a:hover {
+    transform: scale(1.08);
+    box-shadow: 
+        0 0 15px #00ffcc,
+        0 0 30px #00ffcc;
+}
