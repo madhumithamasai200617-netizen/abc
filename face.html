@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Fake ID Detection</title>
+    <link rel="stylesheet" href="face.css">
+</head>
+
+<body>
+
+    <div class="heading">
+        <h1>FACEBOOK FAKE ID DETECTION</h1>
+        <hr>
+    </div>
+
+    <form id="detectForm">
+
+        <div class="form-group1">
+            <label>USER ID:</label><br>
+            <input type="text" id="name" required>
+        </div>
+
+        <div class="form-group2">
+            <label>USER NAME:</label><br>
+            <input type="text" id="uname" required>
+        </div>
+
+        <div class="form-group3">
+            <label>FOLLOWERS:</label><br>
+            <input type="number" id="followers" min="0" required>
+        </div>
+
+        <div class="form-group4">
+            <label>FOLLOWING:</label><br>
+            <input type="number" id="following" min="0" required>
+        </div>
+
+        <div class="form-box1">
+            <label>BIO:</label><br>
+            <input
+                type="text"
+                id="bio"
+                placeholder="Type bio here..."
+                size="40"
+                required
+            >
+        </div>
+
+        <div class="form-box2">
+            <label>POSTS:</label><br>
+            <input type="number" id="post" min="0" required>
+        </div>
+
+        <div class="form-box3">
+            <label>DATE JOINED:</label><br>
+            <input type="date" id="join" required>
+        </div>
+
+        <div class="form-box4">
+            <label>PROFILE PICTURE</label><br>
+
+            <input
+                type="file"
+                id="image"
+                accept="image/*"
+            ><br><br>
+
+            <img
+                id="preview"
+                width="120"
+                style="display:none;border-radius:10px;"
+            >
+        </div>
+
+        <div class="proceed">
+            <button type="submit" id="btn">
+                PROCEED
+            </button>
+        </div>
+
+    </form>
+
+    <div class="result">
+        <h2 id="resultText"></h2>
+        <p id="percentText"></p>
+    </div>
+
+<script>
+
+// Image Preview
+document.getElementById("image").addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(file){
+        const preview = document.getElementById("preview");
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+    }
+
+});
+
+// Submit
+document.getElementById("detectForm").addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const userid = document.getElementById("name").value.trim();
+    const username = document.getElementById("uname").value.trim();
+    const followers = Number(document.getElementById("followers").value);
+    const following = Number(document.getElementById("following").value);
+    const posts = Number(document.getElementById("post").value);
+    const bio = document.getElementById("bio").value.trim();
+    const joined = document.getElementById("join").value;
+
+    if(
+        userid==="" ||
+        username==="" ||
+        bio==="" ||
+        joined===""
+    ){
+        alert("Please fill all fields.");
+        return;
+    }
+
+    const btn=document.getElementById("btn");
+    btn.disabled=true;
+    btn.innerHTML="Analyzing...";
+
+    try{
+const response = await fetch("http://localhost:5000/analyze", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        userid,
+        username,
+        followers,
+        following,
+        posts,
+        bio,
+        joined
+    })
+});
+
+const data = await response.json();
+
+console.log("Server Response:", data);
+
+// If server returned an error message
+if (!response.ok) {
+    alert(data.result || "Server Error");
+    return;
+}
+
+if (data.success && data.result) {
+
+    // Save AI result
+    localStorage.setItem("aiResult", data.result);
+
+    // Redirect
+    window.location.href = "result.html";
+
+} else {
+
+    alert("No AI Result Received.");
+
+}
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Cannot connect to server.");
+
+    }
+
+    finally{
+
+        btn.disabled=false;
+        btn.innerHTML="PROCEED";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
