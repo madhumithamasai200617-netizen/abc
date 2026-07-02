@@ -1,8 +1,13 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>FAKEIDDETECT</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
 </head>
 
 <body>
@@ -15,68 +20,53 @@
 <form id="loginForm">
 
 <div class="mail">
-    <label>Email:</label><br>
-    <input type="email" id="email" placeholder="enter your email" required><br>
+<label>Email</label><br>
+<input type="email" id="email" required>
 </div>
 
 <div class="password">
-    <label>Password:</label><br>
-    <input type="password" id="password" placeholder="enter password" required><br>
+<label>Password</label><br>
+<input type="password" id="password" required>
 </div>
 
 <div class="login">
-    <button type="submit">LOGIN →</button>
+<button type="submit">LOGIN →</button>
 </div>
 
 <div class="one">
-    <hr>
-    <p>Don't have an account? <a href="signup.html">Signup</a></p>
+<hr>
+<p>Don't have an account? <a href="signup.html">Signup</a></p>
 </div>
 
 </form>
 
 <script>
+
 document.getElementById("loginForm").addEventListener("submit", async function(e){
+
     e.preventDefault();
-
     const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const password = document.getElementById("password").value;
 
-    // ✅ basic validation
-    if (!email || !password) {
-        alert("Please fill all fields ❌");
+    const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    if(error){
+        alert(error.message);
         return;
     }
 
-    try {
-        const res = await fetch("http://localhost:5000/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ email, password })
-        });
+    alert("Login Successful");
 
-        const data = await res.json();
+    window.location.href = "multiple.html";
 
-        // ✅ better check
-        if (data.message === "Login successful ✅") {
-            alert("Login successful ✅");
-
-            // ✅ optional: store user
-            localStorage.setItem("user", JSON.stringify(data.user));
-
-            window.location.href = "multiple.html";
-        } else {
-            alert(data.message);
-        }
-
-    } catch (error) {
-        console.error(error);
-        alert("Server error ❌");
-    }
 });
+
 </script>
 
 </body>
 </html>
+
+   
